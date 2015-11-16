@@ -1,10 +1,9 @@
 <ul>
 	<% @projects.each do |project| %>
-		<%= project.name %>
-		<% if project.created_at.today? %>
-			<li><%= project.created_at %></li>
+		<% if project.description.present? %>
+			<li><%= project.name %> - <%= project.description %></li>
 		<% else %>
-			<li><%= project.update_at %></li>
+			<li><%= project.name %></li>
 		<% end %>
 	<% end %>
 </ul>
