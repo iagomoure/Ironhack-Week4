@@ -1,3 +1,11 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+</head>
+<body>
+<h1>Time tracking tool</h1>
 <ul>
 	<% @projects.each do |project| %>
 		<% if project.description.present? %>
@@ -6,4 +14,6 @@
 			<li><%= project.name %></li>
 		<% end %>
 	<% end %>
-</ul>
+</ul>	
+</body>
+</html>
