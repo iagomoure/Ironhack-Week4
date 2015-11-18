@@ -1,13 +1,11 @@
-<!DOCTYPE html>
-<html lang="en">
-	<head>
-		<meta charset="UTF-8">
-		<title>Address Book</title>
-	</head>
-	<body>
+
 		<h1><%= @contact.name %></h1>
+		<form action="/contacts/show/<%= @contact.id %>" method="POST">
+			<button type="submit">Add to favourite</button>
+			<input type="hidden" name="authenticity_token"
+      value="<%= form_authenticity_token %>">
+		</form>
 		<p><%= @contact.address %></p>
 		<p><%= @contact.phone %></p>
-		<p><%= @contact.email %></p>			
-	</body>
-</html>
+		<p><%= @contact.email %></p>
+		<a href="/index">Go back</a>

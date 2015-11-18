@@ -26,7 +26,19 @@ class ContactsController < ApplicationController
   	end
 
   	def render_404(params)
-		Rails.logger.warn("Tried to access #{params} which did not exit.")
-		render "layouts/404"
-	end
+		  Rails.logger.warn("Tried to access #{params} which did not exit.")
+		  render "layouts/404"
+	 end
+
+   def save_favourite
+    @contact = Contact.find_by(id: params[:id])
+    @contact.favourite = true
+    @contact.save
+    redirect_to("/favourites")
+   end
+
+   def favourites
+    binding.pry
+    @contacts = Contact.where(favourite: true)
+  end
 end
