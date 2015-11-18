@@ -1,18 +1,12 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-	<meta charset="UTF-8">
-	<title>Document</title>
-</head>
-<body>
 <ul>
 	<% @projects.each do |project| %>
-		<% if project.description.present? %>
-			<li><%= project.name %> - <%= project.description %></li>
-		<% else %>
-			<li><%= project.name %></li>
-		<% end %>
+		
+		<li><%= link_to(project.name, project_entries_path(project.id))%>
+			<% if project.description.present? %>
+			 - <%= project.description %>
+			<% end %>
+		</li>
 	<% end %>
 </ul>	
-</body>
-</html>
+
+

@@ -1,16 +1,11 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-	<meta charset="UTF-8">
-	<title>Time</title>
-</head>
-<body>
+
 	<h1><%= @project.name %></h1>
 	<ul>
-		<% @entries.each do |entry|%>
+		<% @entries.each do |entry| %>
 			<li><%= entry.hours%>h <%= entry.minutes%>m - <%= entry.date%></li>
 		<% end %>
 	</ul>
 	<p>Total hours worked this month: <%= @total_hours %></p>
-</body>
-</html>	
+
+<%= link_to('Go to projects', projects_path)%>
+<%= link_to('New Project', new_project_entry_path(@project.id))%>
