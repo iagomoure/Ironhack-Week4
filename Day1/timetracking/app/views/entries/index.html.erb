@@ -2,10 +2,12 @@
 	<h1><%= @project.name %></h1>
 	<ul>
 		<% @entries.each do |entry| %>
-			<li><%= entry.hours%>h <%= entry.minutes%>m - <%= entry.date%></li>
+			<li><%= entry.hours%>h <%= entry.minutes%>m - <%= entry.date%>
+			<%= link_to('Edit', edit_project_entry_path(@project.id,entry.id)) %>
+			</li>
 		<% end %>
 	</ul>
 	<p>Total hours worked this month: <%= @total_hours %></p>
 
-<%= link_to('Go to projects', projects_path)%>
-<%= link_to('New Project', new_project_entry_path(@project.id))%>
+<%= link_to('Go back to projects', projects_path)%>
+<%= link_to('Create new entry', new_project_entry_path(@project.id))%>

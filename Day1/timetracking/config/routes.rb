@@ -14,6 +14,6 @@ Rails.application.routes.draw do
 
   #helper resources y sustituye a todo lo de arriba
   resources :projects, only: [:index, :show] do
-  	resources :entries, only: [:index, :new, :create]
+  	resources :entries, only: [:index, :new, :create, :edit, :update]
   end
 end

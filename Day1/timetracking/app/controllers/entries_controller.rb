@@ -16,7 +16,10 @@ class EntriesController < ApplicationController
 	end
 
 	def create
+		#Find the project using params[:project_id]
 		@project = Project.find(params[:project_id])
+		
+		#Create the entry project with params in params[:entry]
 		@entry = @project.entries.new(entry_params)
 		if @entry.save
 			redirect_to action: 'index', controller: 'entries', project_id: @project.id			
@@ -25,7 +28,30 @@ class EntriesController < ApplicationController
 		end	
 	end
 
-	private 
+	def edit
+		@project = Project.find params[:project_id]
+		@entry = @project.entries.find params[:id]
+	end
+
+	def update
+		#Find the project
+		@project = Project.find params[:project_id]
+
+		#Find entrey to update
+		@entry = @project.entries.find params[:id]
+
+		#update the entry using update_attributes
+		if @entry.update_attributes(entry_params)
+			#If ok redirect_to entries index
+			redirect_to action: 'index', controller: 'entries', project_id: @project.id
+		#If wrong show the form again
+		else
+			render "edit"
+		end	
+	end
+
+
+		private 
 
 	def entry_params
 		params.require(:entry).permit(:hours, :minutes, :date)
