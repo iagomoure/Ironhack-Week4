@@ -1,0 +1,20 @@
+<h1><%= @person.name%></h1>
+<h2>Projects</h2>
+
+<ul>
+		<% @projects.each do |project| %>
+			<li><%= project.name %></li>
+		<% end %>
+</ul>	
+
+
+<%= form_for [@person] do |f| %>
+	<%= f.collection_select(:projects, @projects_no_asociated, :id, :name) %>
+  
+	<br>
+
+	<%= f.submit 'Save' %>
+	<%= link_to('Cancel', person_path)%>
+<% end %>
+
+<%= link_to('Go back to people', people_path)%>

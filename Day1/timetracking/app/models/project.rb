@@ -1,6 +1,8 @@
-class Project < ActiveRecord::Base
+ class Project < ActiveRecord::Base
   
   has_many :entries
+  has_many :participations
+  has_many :people, through: :participations
 
   validates :name, uniqueness: true
   validates :name, presence: true

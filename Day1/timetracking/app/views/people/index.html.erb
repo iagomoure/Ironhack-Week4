@@ -1,0 +1,12 @@
+<h2></h2>
+<ul>
+	<% @person.each do |person| %>
+		<li>
+			<%= person.name %>
+			<%= link_to('Edit', person_path(person.id))%>
+			<%= link_to('Delete',person_path(person.id),method: 'delete', data:{confirm: 'Are you sure?'}) %>
+		</li>			
+	<% end %>
+</ul>
+<%= link_to('Create new person', new_person_path)%>
+

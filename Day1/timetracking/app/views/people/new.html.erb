@@ -1,0 +1,11 @@
+<h2>Creating a new person</h2>
+
+<p><% flash_message %></p>
+
+<%= form_for @person do |f| %>
+	<%= f.label :name %>
+	<%= f.text_field :name %>
+	<br>
+	<%= f.submit 'Save' %>
+	<%= link_to('Cancel', people_path)%>
+<% end %>

@@ -61,7 +61,7 @@ class EntriesController < ApplicationController
 	end
 
 
-		private 
+private 
 
 	def entry_params
 		params.require(:entry).permit(:hours, :minutes, :date)
