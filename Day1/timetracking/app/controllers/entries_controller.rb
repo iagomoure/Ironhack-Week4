@@ -2,10 +2,10 @@ class EntriesController < ApplicationController
 	
 	def index
 		@project = Project.find_by(id: params[:project_id])
-		date = Date.current
+		@date = Date.current
 
-		@entries = @project.entries.where(date: date.beginning_of_month..date.end_of_month)
-		@total_hours = @project.total_hours_in_month(date.month,date.year)
+		@entries = @project.entries.where(date: @date.beginning_of_month..@date.end_of_month)
+		
 	end
 
 	def new
@@ -22,8 +22,10 @@ class EntriesController < ApplicationController
 		#Create the entry project with params in params[:entry]
 		@entry = @project.entries.new(entry_params)
 		if @entry.save
+			flash[:notice] = "Entry created successfully"
 			redirect_to action: 'index', controller: 'entries', project_id: @project.id			
 		else		
+			flash[:alert] = "Sorry, something went wrong"
 			render "new"
 		end	
 	end

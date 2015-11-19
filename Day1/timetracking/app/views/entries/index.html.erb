@@ -1,4 +1,6 @@
-
+	<% if flash[:notice] %>
+		<p><%= flash[:notice] %></p>
+	<% end %>
 	<h1><%= @project.name %></h1>
 	<ul>
 		<% @entries.each do |entry| %>
@@ -8,7 +10,8 @@
 
 		<% end %>
 	</ul>
-	<p>Total hours worked this month: <%= @total_hours %></p>
+	<!--Calling a helper -->
+	<p>Total hours worked this month: <%= current_month_hours_for_project(@project,@date) %></p>
 
 <%= link_to('Go back to projects', projects_path)%>
 <%= link_to('Create new entry', new_project_entry_path(@project.id))%>
