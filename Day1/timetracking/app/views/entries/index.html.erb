@@ -4,7 +4,8 @@
 		<% @entries.each do |entry| %>
 			<li><%= entry.hours%>h <%= entry.minutes%>m - <%= entry.date%>
 			<%= link_to('Edit', edit_project_entry_path(@project.id,entry.id)) %>
-			</li>
+			<%= link_to('Delete',project_entry_path(@project.id,entry.id),method: 'delete', data:{confirm: 'Are you sure?'}) %></li>
+
 		<% end %>
 	</ul>
 	<p>Total hours worked this month: <%= @total_hours %></p>
